@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+          xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd  
+                        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+    <!-- Not required from Spring 4 -->
+    <context:annotation-config />
+    <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName">
+            <value>com.mysql.jdbc.Driver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:mysql://localhost:3306/testspring</value>
+        </property>
+        <property name="username" value="root">
+        </property>
+        <property name="password" value="root">
+        </property>
+    </bean>
+    <bean id="accdao" class="com.dao.AccountDaoImpl" autowire="no">    
+        <property name="datasource">
+            <ref bean="ds"/>
+        </property>
+    </bean>
+    <!-- <bean id="accdao" class="edu.aspire.dao.AccountDaoImpl" autowire="byType"/> -->
+</beans>
