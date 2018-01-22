@@ -23,6 +23,7 @@ public class AccountDaoImpl implements AccountDao {
 	public void set(Account account) {
 	    Connection con = null;
         PreparedStatement pstmt = null;
+        System.out.println(datasource);
         try {
             con = datasource.getConnection();
             pstmt = con.prepareStatement("INSERT INTO account VALUES(?,?,?,?)");
