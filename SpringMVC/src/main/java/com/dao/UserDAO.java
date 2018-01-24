@@ -30,4 +30,14 @@ public class UserDAO {
 	    }
 	}
  
+	public void get(int id) {
+		String query = "select * from user where user_id = ?";
+		int n = jdbcTemplet.update(query, new Object[] {id });
+
+		if (n > 0) {
+			System.out.println("record inserted");
+		} else {
+			System.out.println("some problem");
+		}
+	}
 }
